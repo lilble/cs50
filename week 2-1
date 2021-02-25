@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <cs50.h>
+
+int main(void){
+    int sales = 0;
+    int ans=1;
+    int price = get_int("개당 가격은?\n");
+    int pre = get_int("기존 재고량은?\n");
+    
+    while(ans==1){
+        ans = get_int("주문이 있습니까?(enter 1 if there is)\n");
+        if(ans!=1){ break; }
+        int order = get_int("주문량은?\n");
+        if(order>pre){
+            printf("재고가 부족합니다.");
+            break;
+        }
+        sales += price*order*1.1 ;
+
+        printf("주문건수 : %d\n",order);
+        printf("기존 재고량 : %d\n",pre);
+        pre= pre-order;
+        printf("남은 재고량 : %d\n",pre);
+        printf("총 매출액 : %d\n",sales);
+
+    }
+    
+    
+}
